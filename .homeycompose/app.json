@@ -1,0 +1,31 @@
+{
+  "id": "com.plugwise.adam",
+  "version": "1.0.0",
+  "compatibility": ">=2.0.0",
+  "sdk": 2,
+  "name": {
+    "en": "Plugwise Adam"
+  },
+  "description": {
+    "en": "Adds support for Plugwise Adam"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Athom B.V.",
+    "email": "support@athom.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Ted Tolboom"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "com.plugwise.adam",
+  "version": "1.0.0",
+  "description": "Adds support for Plugwise Adam",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fast-xml-parser": "^3.12.12",
+    "mdns-js": "^1.0.3",
+    "node-fetch": "^2.3.0"
+  }
+}

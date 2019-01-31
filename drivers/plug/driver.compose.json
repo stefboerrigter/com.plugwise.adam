@@ -1,0 +1,51 @@
+{
+  "id": "plug",
+  "name": {
+    "en": "Plug"
+  },
+  "class": "socket",
+  "capabilities": [
+    "onoff"
+  ],
+  "images": {
+    "large": "{{driverPathAssets}}/images/large.png",
+    "small": "{{driverPathAssets}}/images/small.png"
+  },
+  "pair": [
+    {
+      "id": "list_bridges",
+      "template": "list_devices",
+      "options": {
+        "singular": true
+      },
+      "navigation": {
+        "next": "pincode"
+      }
+    },
+    {
+      "id": "pincode",
+      "template": "pincode",
+      "options": {
+        "type": "text",
+        "length": 8,
+        "title": {
+          "en": "Enter password"
+        },
+        "hint": {
+          "en": "Enter the Adam's password. You can find this on the back of the device."
+        }
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}
