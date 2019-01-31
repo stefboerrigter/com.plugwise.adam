@@ -30,16 +30,21 @@
   },
   "drivers": [
     {
-      "id": "plug",
       "name": {
-        "en": "Plug"
+        "en": "Lisa"
       },
-      "class": "socket",
+      "class": "thermostat",
       "capabilities": [
-        "onoff",
-        "measure_power",
-        "meter_power"
+        "target_temperature",
+        "measure_temperature"
       ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 0,
+          "max": 99.5,
+          "step": 0.5
+        }
+      },
       "images": {
         "large": "{{driverPathAssets}}/images/large.png",
         "small": "{{driverPathAssets}}/images/small.png"
@@ -52,8 +57,12 @@
             "singular": true
           },
           "navigation": {
-            "next": "pincode"
+            "next": "loading"
           }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
         },
         {
           "id": "pincode",
@@ -80,7 +89,65 @@
           "id": "add_devices",
           "template": "add_devices"
         }
-      ]
+      ],
+      "id": "lisa"
+    },
+    {
+      "name": {
+        "en": "Plug"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "measure_power",
+        "meter_power"
+      ],
+      "images": {
+        "large": "{{driverPathAssets}}/images/large.png",
+        "small": "{{driverPathAssets}}/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the Adam's password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "plug"
     }
   ]
 }

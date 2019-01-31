@@ -14,15 +14,15 @@ discovery.discover({
     
     await device.testPassword({ password: 'tsstmlns' })
     const appliances = await device.getAppliances();
-    const appliance = appliances[0];
+    const appliance = appliances.find(appliance => {
+      return appliance.type === 'zone_thermostat';
+    });
     console.log('appliance', appliance)
     
-    /*
-    await device.setRelay({
-      applianceId: '6e7f69d894ec4599838a8b942fcf0049',
-      on: true,
+    await device.setThermostat({
+      applianceId: appliance.$attr.id,
+      setpoint: 10,
     })
-    */
   })
   .then(console.log)
   .catch(console.error);

@@ -28,18 +28,23 @@ module.exports = class PlugwiseAdamPlugDevice extends PlugwiseAdamDevice {
           && log.period
           && log.period.measurement ) {
            const value = parseFloat(log.period.measurement.$text);
-           this.setCapabilityValue('measure_power', value).catch(this.error);           
+           this.setCapabilityValue('measure_power', value).catch(this.error);
          }
-         
+       });
+    }
+    
+    if( appliance.logs
+     && Array.isArray(appliance.logs.interval_log) ) {
+       appliance.logs.interval_log.forEach(log => {         
          if( log.type === 'electricity_consumed'
           && log.unit === 'Wh'
           && log.period
           && log.period.measurement ) {
-           const value = parseFloat(log.period.measurement.$text);
+           const value = parseFloat(log.period.measurement.$text) / 1000;
            this.setCapabilityValue('meter_power', value).catch(this.error);           
          }
        });
-     }
+    }
   }
   
   async onCapabilityOnoff(value) {
