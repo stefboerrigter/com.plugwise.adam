@@ -15,7 +15,6 @@ module.exports = class PlugwiseAdamLisaDevice extends PlugwiseAdamLocationDevice
           && log.period
           && log.period.measurement ) {
            const value = parseFloat(log.period.measurement.$text) * 100;
-           console.log('value', value)
            this.setCapabilityValue('measure_battery', value).then(console.log).catch(this.error);
          }
        });
