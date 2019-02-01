@@ -214,9 +214,114 @@
         }
       ],
       "id": "valve"
+    },
+    {
+      "name": {
+        "en": "Zone",
+        "nl": "Zone"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "measure_power",
+        "location_preset"
+      ],
+      "images": {
+        "large": "{{driverPathAssets}}/images/large.png",
+        "small": "{{driverPathAssets}}/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the Adam's password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "zone"
     }
   ],
   "capabilities": {
+    "location_preset": {
+      "title": {
+        "en": "Preset"
+      },
+      "uiComponent": "picker",
+      "getable": true,
+      "setable": true,
+      "type": "enum",
+      "values": [
+        {
+          "id": "home",
+          "title": {
+            "en": "Home",
+            "nl": "Thuis"
+          }
+        },
+        {
+          "id": "away",
+          "title": {
+            "en": "Away",
+            "nl": "Weg"
+          }
+        },
+        {
+          "id": "asleep",
+          "title": {
+            "en": "Night",
+            "nl": "Nacht"
+          }
+        },
+        {
+          "id": "vacation",
+          "title": {
+            "en": "Vacation",
+            "nl": "Vakantie"
+          }
+        },
+        {
+          "id": "no_frost",
+          "title": {
+            "en": "Frost protection",
+            "nl": "Anti-vries"
+          }
+        }
+      ]
+    },
     "valve_position": {
       "type": "number",
       "title": {

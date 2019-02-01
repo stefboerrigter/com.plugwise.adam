@@ -6,7 +6,9 @@ const PlugwiseAdamDriver = require('../../lib/PlugwiseAdamDriver');
 module.exports = class PlugwiseAdamPlugDriver extends PlugwiseAdamDriver {
 	
 	onPairFilterAppliance({ appliance }) {
-  	return appliance.type === 'zz_misc';
+  	if( appliance.type === 'zz_misc' ) return true;
+  	if( appliance.type === 'central_heating_pump' ) return true;  	
+  	return false;
 	}
 	
 }

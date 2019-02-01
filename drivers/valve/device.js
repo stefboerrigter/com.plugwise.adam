@@ -1,9 +1,9 @@
 'use strict';
 
 const Homey = require('homey');
-const PlugwiseAdamLocationDevice = require('../../lib/PlugwiseAdamLocationDevice');
+const PlugwiseAdamThermostatDevice = require('../../lib/PlugwiseAdamThermostatDevice');
 
-module.exports = class PlugwiseAdamValveDevice extends PlugwiseAdamLocationDevice {
+module.exports = class PlugwiseAdamValveDevice extends PlugwiseAdamThermostatDevice {
 	
 	onPoll({ appliance }) {
   	super.onPoll({ appliance });
