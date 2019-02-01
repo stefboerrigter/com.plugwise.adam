@@ -1,12 +1,12 @@
 {
   "name": {
-    "en": "Lisa"
+    "en": "Floor & Tom"
   },
   "class": "thermostat",
   "capabilities": [
     "target_temperature",
     "measure_temperature",
-    "measure_battery"
+    "valve_position"
   ],
   "capabilitiesOptions": {
     "target_temperature": {

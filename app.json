@@ -37,7 +37,8 @@
       "class": "thermostat",
       "capabilities": [
         "target_temperature",
-        "measure_temperature"
+        "measure_temperature",
+        "measure_battery"
       ],
       "capabilitiesOptions": {
         "target_temperature": {
@@ -149,6 +150,86 @@
         }
       ],
       "id": "plug"
+    },
+    {
+      "name": {
+        "en": "Floor & Tom"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "valve_position"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 0,
+          "max": 99.5,
+          "step": 0.5
+        }
+      },
+      "images": {
+        "large": "{{driverPathAssets}}/images/large.png",
+        "small": "{{driverPathAssets}}/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the Adam's password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "valve"
     }
-  ]
+  ],
+  "capabilities": {
+    "valve_position": {
+      "type": "number",
+      "title": {
+        "en": "Valve position",
+        "nl": "Radiator positie"
+      },
+      "min": 0,
+      "max": 100,
+      "units": "%",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "uiComponent": "sensor"
+    }
+  }
 }
