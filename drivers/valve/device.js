@@ -15,7 +15,7 @@ module.exports = class PlugwiseAdamValveDevice extends PlugwiseAdamLocationDevic
           && log.period
           && log.period.measurement ) {
            const value = parseFloat(log.period.measurement.$text) * 100;
-           this.setCapabilityValue('valve_position', value).then(console.log).catch(this.error);
+           this.setCapabilityValue('valve_position', value).catch(this.error);
          }
        });
     }
