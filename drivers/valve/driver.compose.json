@@ -6,7 +6,8 @@
   "capabilities": [
     "target_temperature",
     "measure_temperature",
-    "valve_position"
+    "valve_position",
+    "measure_battery"
   ],
   "capabilitiesOptions": {
     "target_temperature": {
