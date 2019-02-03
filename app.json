@@ -29,7 +29,131 @@
       }
     ]
   },
+  "flow": {
+    "actions": [
+      {
+        "id": "Set_DHW_mode",
+        "title": {
+          "en": "Set domestic hot water mode",
+          "nl": "Verander de tapwater comfort modus"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=adam"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "on",
+                "label": {
+                  "en": "Comfort",
+                  "nl": "Comfort"
+                }
+              },
+              {
+                "id": "off",
+                "label": {
+                  "en": "Normal",
+                  "nl": "Normaal"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
+    {
+      "name": {
+        "en": "Adam HA"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "boiler_state",
+        "DHW_state",
+        "modulation_level",
+        "measure_temperature.intended",
+        "measure_temperature.boiler",
+        "measure_temperature.return",
+        "boiler_status_code",
+        "boiler_error_code",
+        "DHW_mode"
+      ],
+      "capabilitiesOptions": {
+        "measure_temperature.intended": {
+          "title": {
+            "en": "Intended boiler temperature",
+            "nl": "Gewenste ketel temperatuur"
+          },
+          "preventInsights": false
+        },
+        "measure_temperature.boiler": {
+          "title": {
+            "en": "Boiler temperature",
+            "nl": "Aanvoertemperatuur"
+          },
+          "preventInsights": false
+        },
+        "measure_temperature.return": {
+          "title": {
+            "en": "Return water temperature",
+            "nl": "Retourtemperatuur"
+          },
+          "preventInsights": false
+        }
+      },
+      "images": {
+        "large": "{{driverPathAssets}}/images/large.png",
+        "small": "{{driverPathAssets}}/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the Adam's password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "adam"
+    },
     {
       "name": {
         "en": "Lisa"
@@ -228,6 +352,13 @@
         "measure_power",
         "location_preset"
       ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 0,
+          "max": 99.5,
+          "step": 0.5
+        }
+      },
       "images": {
         "large": "{{driverPathAssets}}/images/large.png",
         "small": "{{driverPathAssets}}/images/small.png"
@@ -277,6 +408,83 @@
     }
   ],
   "capabilities": {
+    "boiler_error_code": {
+      "type": "number",
+      "title": {
+        "en": "Boiler error code",
+        "nl": "Ketel fout code"
+      },
+      "min": 0,
+      "max": 255,
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/boiler_error_code.svg"
+    },
+    "boiler_state": {
+      "type": "boolean",
+      "title": {
+        "en": "Boiler state",
+        "nl": "Ketel toestand"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/boiler_state.svg"
+    },
+    "boiler_status_code": {
+      "type": "number",
+      "title": {
+        "en": "Boiler status code",
+        "nl": "Ketel toestand code"
+      },
+      "min": 0,
+      "max": 255,
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/boiler_status_code.svg"
+    },
+    "DHW_mode": {
+      "title": {
+        "en": "Domestic hot water mode",
+        "nl": "Tap water comfort modus"
+      },
+      "uiComponent": "picker",
+      "getable": true,
+      "setable": true,
+      "type": "enum",
+      "values": [
+        {
+          "id": "on",
+          "title": {
+            "en": "Comfort"
+          }
+        },
+        {
+          "id": "off",
+          "title": {
+            "en": "Normal",
+            "nl": "Normaal"
+          }
+        }
+      ]
+    },
+    "DHW_state": {
+      "type": "boolean",
+      "title": {
+        "en": "Hot water state",
+        "nl": "Tap water toestand"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/DHW_state.svg"
+    },
     "location_preset": {
       "title": {
         "en": "Preset"
@@ -323,6 +531,21 @@
         }
       ]
     },
+    "modulation_level": {
+      "type": "number",
+      "title": {
+        "en": "Modulation level",
+        "nl": "Modulatie niveau"
+      },
+      "min": 0,
+      "max": 100,
+      "units": "%",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/modulation_level.svg"
+    },
     "valve_position": {
       "type": "number",
       "title": {
@@ -334,7 +557,7 @@
       "units": "%",
       "getable": true,
       "setable": false,
-      "insights": false,
+      "insights": true,
       "uiComponent": "sensor"
     }
   }
