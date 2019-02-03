@@ -428,6 +428,16 @@
         "en": "Boiler state",
         "nl": "Ketel toestand"
       },
+      "label": {
+        "true": {
+          "en": "Active",
+          "nl": "Actief"
+        },
+        "false": {
+          "en": "Idle",
+          "nl": "Uit"
+        }
+      },
       "getable": true,
       "setable": false,
       "insights": true,
@@ -478,6 +488,16 @@
       "title": {
         "en": "Hot water state",
         "nl": "Tap water toestand"
+      },
+      "label": {
+        "true": {
+          "en": "Active",
+          "nl": "Actief"
+        },
+        "false": {
+          "en": "Idle",
+          "nl": "Uit"
+        }
       },
       "getable": true,
       "setable": false,
