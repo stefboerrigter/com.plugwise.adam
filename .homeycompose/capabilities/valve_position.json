@@ -9,6 +9,6 @@
   "units": "%",
   "getable": true,
   "setable": false,
-  "insights": false,
+  "insights": true,
   "uiComponent": "sensor"
 }
