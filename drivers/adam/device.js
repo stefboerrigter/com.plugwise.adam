@@ -155,12 +155,13 @@ module.exports = class PlugwiseAdamHADevice extends PlugwiseAdamDevice {
   }
 
   async _setDHWmodeRunListener(args) {
-    if (!args.hasOwnProperty('mode')) return Promise.reject('mode_property_missing');
-    return await args.device.bridge.setDHWmode({
+    if (!args.hasOwnProperty('mode'))
+      throw new Error('mode_property_missing');
+    
+    return args.device.bridge.setDHWmode({
       applianceId: this.applianceId,
       mode: args.mode,
     });
-    return Promise.reject('unknown_error');
   }
 
 }

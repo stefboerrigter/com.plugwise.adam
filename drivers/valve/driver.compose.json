@@ -17,8 +17,8 @@
     }
   },
   "images": {
-    "large": "{{driverPathAssets}}/images/large.png",
-    "small": "{{driverPathAssets}}/images/small.png"
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "small": "{{driverAssetsPath}}/images/small.png"
   },
   "pair": [
     {
