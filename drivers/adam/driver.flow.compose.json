@@ -1,0 +1,36 @@
+{
+  "triggers": [],
+  "conditions": [],
+  "actions": [
+    {
+      "id": "Set_DHW_mode",
+      "title": {
+        "en": "Set domestic hot water mode",
+        "nl": "Verander de tapwater comfort modus"
+      },
+      "args": [
+        {
+          "name": "mode",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "on",
+              "label": {
+                "en": "Comfort",
+                "nl": "Comfort"
+              }
+            },
+            {
+              "id": "off",
+              "label": {
+                "en": "Normal",
+                "nl": "Normaal"
+              }
+            }
+          ]
+        }
+      ]
+    }
+
+  ]
+}
